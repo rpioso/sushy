@@ -64,6 +64,8 @@ class BiosTestCase(base.TestCase):
         self.assertEqual('', self.sys_bios.attributes['AdminPhone'])
         self.assertEqual('Uefi', self.sys_bios.attributes['BootMode'])
         self.assertEqual(0, self.sys_bios.attributes['ProcCoreDisable'])
+        self.assertEqual(['OnReset', 'InMaintenanceWindowOnReset'],
+                         self.sys_bios.supported_apply_times)
         # testing here if settings subfield parsed by checking ETag,
         # other settings fields tested in specific settings test
         self.assertEqual('9234ac83b9700123cc32',

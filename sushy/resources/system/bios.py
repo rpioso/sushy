@@ -191,3 +191,11 @@ class Bios(base.ResourceBase):
             containing status and any messages
         """
         return self._settings.get_status(self._registries)
+
+    @property
+    def supported_apply_times(self):
+        """List of supported BIOS update apply times
+
+        :returns: List of supported update apply time names
+        """
+        return self._settings._supported_apply_times
