@@ -104,7 +104,7 @@ class Bios(base.ResourceBase):
         :param value: Attribute value
         :param apply_time: When to update the attribute. Optional.
         """
-        self.set_attributes({key: value})
+        self.set_attributes({key: value}, apply_time)
 
     def set_attributes(self, value, apply_time=None):
         """Update many attributes at once
