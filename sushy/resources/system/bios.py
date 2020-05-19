@@ -93,7 +93,7 @@ class Bios(base.ResourceBase):
     def apply_time_settings(self):
         return self._pending_settings_resource._apply_time_settings
 
-    def set_attribute(self, key, value):
+    def set_attribute(self, key, value, apply_time=None):
         """Update an attribute
 
         Attribute update is not immediate but requires system restart.
@@ -102,10 +102,11 @@ class Bios(base.ResourceBase):
 
         :param key: Attribute name
         :param value: Attribute value
+        :param apply_time: When to update the attribute. Optional.
         """
         self.set_attributes({key: value})
 
-    def set_attributes(self, value):
+    def set_attributes(self, value, apply_time=None):
         """Update many attributes at once
 
         Attribute update is not immediate but requires system restart.
@@ -113,9 +114,16 @@ class Bios(base.ResourceBase):
         property
 
         :param value: Key-value pairs for attribute name and value
+        :param apply_time: When to update the attributes. Optional.
         """
+        payload = {'Attributes': value})
+        if apply_time:
+            payload['@Redfish.SettingsApplyTime'] = {
+                '@odata.type': '#Settings.v1_0_0.PreferredApplyTime',
+                'ApplyTime': apply_time
+            }
         self._settings.commit(self._conn,
-                              {'Attributes': value})
+                              payload)
         utils.cache_clear(self, force_refresh=False,
                           only_these=['_pending_settings_resource'])
 
