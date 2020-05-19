@@ -116,7 +116,7 @@ class Bios(base.ResourceBase):
         :param value: Key-value pairs for attribute name and value
         :param apply_time: When to update the attributes. Optional.
         """
-        payload = {'Attributes': value})
+        payload = {'Attributes': value}
         if apply_time:
             payload['@Redfish.SettingsApplyTime'] = {
                 '@odata.type': '#Settings.v1_0_0.PreferredApplyTime',
