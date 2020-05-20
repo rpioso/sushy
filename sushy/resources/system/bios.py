@@ -104,7 +104,12 @@ class Bios(base.ResourceBase):
         :param key: Attribute name
         :param value: Attribute value
         :param apply_time: When to update the attribute. Optional.
+            APPLY_TIME_IMMEDIATE - Immediate,
+            APPLY_TIME_ON_RESET - On reset,
+            APPLY_TIME_MAINT_START - During specified maintenance time
+            APPLY_TIME_MAINT_RESET - On reset during specified maintenance time
         """
+        # TODO(ajya) support passing maintenance time for apply time option
         self.set_attributes({key: value}, apply_time)
 
     def set_attributes(self, value, apply_time=None):
@@ -116,7 +121,12 @@ class Bios(base.ResourceBase):
 
         :param value: Key-value pairs for attribute name and value
         :param apply_time: When to update the attributes. Optional.
+            APPLY_TIME_IMMEDIATE - Immediate,
+            APPLY_TIME_ON_RESET - On reset,
+            APPLY_TIME_MAINT_START - During specified maintenance time
+            APPLY_TIME_MAINT_RESET - On reset during specified maintenance time
         """
+        # TODO(ajya) support passing maintenance time for apply time option
         payload = {'Attributes': value}
         if apply_time:
             payload['@Redfish.SettingsApplyTime'] = {
