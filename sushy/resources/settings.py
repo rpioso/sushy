@@ -154,6 +154,10 @@ class SettingsField(base.CompositeField):
     to change this resource
     """
 
+    _supported_apply_times = base.Field('SupportedApplyTimes',
+                                        adapter=list)
+    """List of supported apply times"""
+
     @property
     def maintenance_window(self):
         """MaintenanceWindow field
