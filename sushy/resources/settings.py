@@ -154,8 +154,9 @@ class SettingsField(base.CompositeField):
     to change this resource
     """
 
-    _supported_apply_times = base.Field('SupportedApplyTimes',
-                                        adapter=list)
+    _supported_apply_times = base.MappedListField(
+        'SupportedApplyTimes',
+        res_maps.APPLY_TIME_VALUE_MAP)
     """List of supported apply times"""
 
     @property

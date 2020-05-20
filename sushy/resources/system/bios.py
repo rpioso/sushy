@@ -19,6 +19,7 @@ import logging
 from sushy import exceptions
 from sushy.resources import base
 from sushy.resources import common
+from sushy.resources import mappings as res_maps
 from sushy.resources import settings
 from sushy import utils
 
@@ -120,7 +121,7 @@ class Bios(base.ResourceBase):
         if apply_time:
             payload['@Redfish.SettingsApplyTime'] = {
                 '@odata.type': '#Settings.v1_0_0.PreferredApplyTime',
-                'ApplyTime': apply_time
+                'ApplyTime': res_maps.APPLY_TIME_VALUE_MAP_REV[apply_time]
             }
         self._settings.commit(self._conn,
                               payload)
