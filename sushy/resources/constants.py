@@ -146,9 +146,7 @@ DURABLE_NAME_FORMAT_iQN = 'iSCSI Qualified Name'
 
 # Apply time constants
 
-APPLY_TIME_IMMEDIATE = 'Apply immediatly'
-APPLY_TIME_ON_RESET = 'Apply on a reset'
-APPLY_TIME_MAINT_START = 'Apply during maintenance window'
-' as specified'
-APPLY_TIME_MAINT_RESET = 'Apply after as reset but within'
-' maintenance window as specified'
+APPLY_TIME_IMMEDIATE = 'immediate'
+APPLY_TIME_ON_RESET = 'on reset'
+APPLY_TIME_MAINT_START = 'at maintenance window start'
+APPLY_TIME_MAINT_RESET = 'in maintenance window on reset'
