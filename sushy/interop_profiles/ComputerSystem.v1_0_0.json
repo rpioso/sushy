@@ -1,0 +1,71 @@
+{
+    "SchemaDefinition": "ComputerSystem.v1_0_0",
+    "ProfileName": "ComputerSystem",
+    "ProfileVersion": "1.0.0",
+    "Purpose": "This is a sample Redfish Interoperability profile.",
+    "OwningEntity": "Dell",
+    "ContactInfo": "abc@dell.com",
+    "Resources": {
+	"ComputerSystemCollection": {
+		"PropertyRequirements": {
+			"Members": {
+				"MinCount": 1
+			}
+		}
+	},
+        "ComputerSystem": {
+            "MinVersion": "1.1.0",
+            "Purpose": "Every implementation must have the logical view of the System.",
+            "PropertyRequirements": {
+                "SerialNumber": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Manufacturer": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Model": {
+                    "ReadRequirement": "Recommended"
+                },
+                "PowerState":{ 
+                        "Comparison":"AnyOf",
+                        "Values": ["On","Off","PoweringOn","PoweringOff"]
+		},
+		"Boot": {
+			"PropertyRequirements": {
+				"BootSourceOverrideEnabled": {},
+				"BootSourceOverrideMode": {
+					"ReadRequirement": "Mandatory",
+					"Comparison": "AnyOf",
+                                        "Values": ["UEFI","Legacy"]
+				},
+				"BootSourceOverrideTarget": {},
+				"UefiTargetBootSourceOverride": {
+					"ReadRequirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "If UEFI mode is selected, must allow for UEFI target.",
+						"Comparision": "Equal",
+						"Values": ["UEFI"],
+						"ReadRequirement": "Mandatory"
+					}]
+				}
+			}
+		}
+            },
+            "ActionRequirements":{
+               "Reset": {
+                    "ReadRequirement": "Mandatory",
+                    "Purpose": "Ability to reset the system is a core requirement of most users.",
+                    "Parameters": {
+                        "ResetType": {
+                            "ParameterValues": ["ForceOff","On","PowerCycle"],
+                            "RecommendedValues": ["GracefulShutdown", "ForceRestart", "PushPowerButton","Nmi"],
+                            "ReadRequirement": "Mandatory"
+                        }
+                    }
+                }
+		
+            }
+        }
+    }
+}
+
