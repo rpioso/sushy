@@ -1,0 +1,149 @@
+{
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+	"ProfileName": "RedfishProfile",
+	"ProfileVersion": "1.0.0",
+	"Purpose": "Redfish Interoperability profile",
+	"OwningEntity": "Dell",
+	"ContactInfo": "abc@dell.com",
+	"Resources": {
+		"ComputerSystemCollection": {
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
+			}
+		},
+                "ChassisCollection": {
+                        "PropertyRequirements": {
+                                "Members": {
+                                        "MinCount": 1
+                                }
+                        }
+                },
+                "FabricCollection": {
+                        "PropertyRequirements": {
+                                "Members": {
+                                        "MinCount": 1
+                                }
+                        }
+                },
+                "ManagerCollection": {
+                        "PropertyRequirements": {
+                                "Members": {
+                                        "MinCount": 1
+                                }
+                        }
+                },
+		"Manager": {
+			"PropertyRequirements": {
+				"AutoDSTEnabled" : {
+					"ReadRequirement" : "IfImplemented"
+				},
+				"FirmwareVersion" : {},
+				"GraphicalConsole" : {
+					"PropertyRequirements": {
+						"ConnectTypesSupported" : {
+							"Comparison" : "AnyOf",
+							"Values" : ["KVMIP", "Oem"]
+						},
+						"MaxConcurrentSessions" : {},
+						"ServiceEnabled" : {}
+					}
+				},
+				"SerialConsole" : {
+					"PropertyRequirements": {
+                                                "ConnectTypesSupported" : {
+							"Comparison" : "AnyOf",
+							"Values" : ["SSH", "Telnet", "IPMI", "Oem"]
+						},
+                                                "MaxConcurrentSessions" : {},
+                                                "ServiceEnabled" : {}
+                                        }
+                                },
+				"CommandShell" : {
+                                        "PropertyRequirements": {
+                                                "ConnectTypesSupported" : {
+                                                        "Comparison" : "AnyOf",
+                                                        "Values" : ["SSH", "Telnet", "IPMI", "Oem"]
+						},
+                                                "MaxConcurrentSessions" : {},
+                                                "ServiceEnabled" : {}
+                                        }
+                                },
+				"Description" : {},
+				"Id" : {},
+				"Name" : {},
+				"Model" : {},
+				"ManagerType" : {
+					"Comparison" : "AnyOf",
+					"Values" : ["ManagementController", "EnclosureManager", "BMC", "RackManager", "AuxiliaryController", "Service"]
+			       	},
+				"UUID" : {},
+				"Links" : {
+					"PropertyRequirements" : {
+						"ManagerForServers" : {},
+						"ManagerForChassis" : {}
+					}
+				}
+			},
+			"ActionRequirements" : {
+				"Reset" : {
+					"Parameters" : {
+						"ResetType" : {
+							"MinSupportValues": ["GracefulRestart", "ForceRestart"]
+						}
+					}
+				}
+			}
+		},
+		"ServiceRoot": {
+			"PropertyRequirements": {
+				"Chassis": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["Chassis"]
+				},
+				"Manager": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["Manager"]
+				},
+				"SessionService": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["SessionService"]
+				},
+				"Id": {
+					"ReadRequirement": "Mandatory"
+				},
+				"Name": {},
+				"UUID": {
+					"ReadRequirement": "IfImplemented"
+				},
+				"Product": {
+                                        "ReadRequirement": "Mandatory"
+				},
+				"ProtocolFeaturesSupported": {
+					"ExcerptQuery" : "Recommended",
+					"ExpandQuery" : "Mandatory",
+					"FilterQuery" : "Mandatory",
+					"OnlyMemberQuery" : "Mandatory",
+					"SelectQuery" : "Mandatory"
+				},
+				"Systems": {
+					"Comparison":"LinkToResource",
+                                	"Values":["Systems"]
+				},
+				"Fabrics": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["Fabrics"]
+				},
+				"Registries": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["Registries"]
+				},
+				"UpdateService": {
+				        "Comparison":"LinkToResource",
+                                        "Values":["UpdateService"]
+				}
+			}
+		}
+	}
+}
