@@ -14,9 +14,15 @@
 		}
 	},
         "ComputerSystem": {
-            "MinVersion": "1.1.0",
+            "MinVersion": "1.0.0",
             "Purpose": "Every implementation must have the logical view of the System.",
             "PropertyRequirements": {
+                "Id": {
+                    "ReadRequirement": "Recommended"
+                },
+                "UUID": {
+                    "ReadRequirement": "Recommended"
+                },
                 "SerialNumber": {
                     "ReadRequirement": "Recommended"
                 },
@@ -26,28 +32,56 @@
                 "Model": {
                     "ReadRequirement": "Recommended"
                 },
+                "MemorySummary": {
+                    "ReadRequirement": "Recommended"
+                },
+                "SKU": {
+                    "ReadRequirement": "Recommended"
+                },
+                "BiosVersion": {
+                    "ReadRequirement": "Recommended"
+                },
+                "HostName": {
+                    "ReadRequirement": "Recommended"
+                },
                 "PowerState":{ 
-                        "Comparison":"AnyOf",
+                        "Comparison": "AnyOf",
                         "Values": ["On","Off","PoweringOn","PoweringOff"]
+		},
+		"IndicatorLED":{
+			"Comparison": "AnyOf",
+			"Values": ["Lit", "Blinking", "Off", "Unknown"]
+		},
+		"SystemType":{
+			"Comparison": "AnyOf",
+			"Values": [
+				"Physical", "Virtual", "OS", 
+				"PhysicallyPartitioned", 
+				"VirtuallyPartitioned", "Composed"
+			]
 		},
 		"Boot": {
 			"PropertyRequirements": {
-				"BootSourceOverrideEnabled": {},
+				"BootSourceOverrideEnabled": {
+					"Comparison": "AnyOf",
+                                        "Values": ["Once","Continuous","Disabled"]
+				},
 				"BootSourceOverrideMode": {
-					"ReadRequirement": "Mandatory",
 					"Comparison": "AnyOf",
                                         "Values": ["UEFI","Legacy"]
 				},
-				"BootSourceOverrideTarget": {},
-				"UefiTargetBootSourceOverride": {
-					"ReadRequirement": "Recommended",
-					"ConditionalRequirements": [{
-						"Purpose": "If UEFI mode is selected, must allow for UEFI target.",
-						"Comparision": "Equal",
-						"Values": ["UEFI"],
-						"ReadRequirement": "Mandatory"
-					}]
+				"BootSourceOverrideTarget": {
+					"MinSupportValues": [
+						"None", "Pxe", "Floppy", "Cd", 
+						"Hdd", "BiosSetup", "Utilities", 
+						"UefiTarget", "SDCard", "UefiHttp"
+					]
 				}
+			}
+		},
+                "Links": {
+			"PropertyRequirements":{
+				"ManagedBy": {}
 			}
 		}
             },
@@ -57,9 +91,12 @@
                     "Purpose": "Ability to reset the system is a core requirement of most users.",
                     "Parameters": {
                         "ResetType": {
-                            "ParameterValues": ["ForceOff","On","PowerCycle"],
-                            "RecommendedValues": ["GracefulShutdown", "ForceRestart", "PushPowerButton","Nmi"],
-                            "ReadRequirement": "Mandatory"
+                            "ParameterValues": [
+				"On", "ForceOff", "ForceRestart", 
+				"GracefulShutdown", "PushPowerButton", 
+				"Nmi", "PowerCycle"
+				],
+                            "RecommendedValues": ["GracefulRestart"]
                         }
                     }
                 }
