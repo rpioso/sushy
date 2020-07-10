@@ -1,7 +1,7 @@
 {
-	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_1",
 	"ProfileName": "RedfishProfile",
-	"ProfileVersion": "1.0.0",
+	"ProfileVersion": "1.0.1",
 	"Purpose": "Redfish Interoperability profile",
 	"OwningEntity": "Dell",
 	"ContactInfo": "abc@dell.com",
@@ -17,6 +17,81 @@
                         "PropertyRequirements": {
                                 "Members": {
                                         "MinCount": 1
+                                }
+                        }
+                },
+                "Chassis": {
+                        "PropertyRequirements": {
+                                "AssetTag": {},
+                                "ChassisType": {
+					"PropertyRequirements": {
+						"Comparison": "AnyOf",
+						"Values": [
+							"Rack",
+						       	"Blade",
+						       	"Enclosure",
+							"StandAlone",
+						       	"RackMount",
+						       	"Card",
+							"Cartridge",
+						       	"Row",
+						       	"Pod",
+							"Expansion",
+						       	"SideCar",
+						       	"Zone",
+							"Sled",
+						       	"Shelf",
+						       	"Drawer",
+						       	"Module",
+							"Component",
+						       	"IPBasedDrive",
+						       	"RackGroup",
+							"StorageEnclosure",
+						       	"Other"
+						]
+					}
+				},
+                                "IndicatorLED": {},
+                                "Manufacturer": {},
+                                "Model": {},
+                                "SerialNumber": {},
+                                "SKU": {},
+                                "PartNumber": {},
+                                "PowerState": {},
+                                "Status": {},
+                                "Thermal": {},
+                                "Power": {},
+                                "Links": {
+                                        "PropertyRequirements": {
+                                                "ManagedBy": {},
+						"ComputerSystems" : {}
+                                        }
+                                },
+                                "UUID": {},
+                                "PhysicalSecurity": {},
+                                "WeightKg": {
+					"ReadRequirement": "None"
+				},
+                                "HeightMm": {
+					"ReadRequirement": "None"
+				},
+                                "DepthMm": {
+					"ReadRequirement": "None"
+				},
+                                "Description": {}
+                        },
+			"ActionRequirements" : {
+                                "Reset" : {
+                                        "Parameters" : {
+                                                "ResetType" : {
+							"ParameterValues": ["On","ForceOff"],
+                                                        "RecommendedValues": [
+							       "GracefulShutdown", "GracefulRestart",
+						       		"ForceRestart", "Nmi", "ForceOn",
+						 		"PushPowerButton", "PowerCycle"
+							]		
+                                                }
+                                        }
                                 }
                         }
                 },
@@ -90,7 +165,8 @@
 				"Reset" : {
 					"Parameters" : {
 						"ResetType" : {
-							"MinSupportValues": ["GracefulRestart", "ForceRestart"]
+							"ParameterValues": ["GracefulRestart"],
+							"RecommendedValues": ["ForceRestart"]
 						}
 					}
 				}
@@ -102,9 +178,9 @@
 				        "Comparison":"LinkToResource",
                                         "Values":["Chassis"]
 				},
-				"Manager": {
+				"Managers": {
 				        "Comparison":"LinkToResource",
-                                        "Values":["Manager"]
+                                        "Values":["Managers"]
 				},
 				"SessionService": {
 				        "Comparison":"LinkToResource",
