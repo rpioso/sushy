@@ -17,42 +17,55 @@
             "MinVersion": "1.0.0",
             "Purpose": "Every implementation must have the logical view of the System.",
             "PropertyRequirements": {
-                "Id": {
-                    "ReadRequirement": "Recommended"
+                "AssetTag": {
+		    "ReadRequirement":"Recommended"
                 },
+                "Description": {
+		    "ReadRequirement":"Recommended"
+                },
+                "Name": {
+		    "ReadRequirement":"Recommended"
+		},
                 "UUID": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
+		},
+                "Id": {
+		    "ReadRequirement":"Mandatory"
                 },
                 "SerialNumber": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "Manufacturer": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "Model": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "MemorySummary": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "SKU": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "BiosVersion": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "HostName": {
-                    "ReadRequirement": "Recommended"
+		    "ReadRequirement":"Recommended"
                 },
                 "PowerState":{ 
+		    	"ReadRequirement":"Recommended",
                         "Comparison": "AnyOf",
                         "Values": ["On","Off","PoweringOn","PoweringOff"]
 		},
 		"IndicatorLED":{
+			"ReadRequirement":"Recommended",
+		    	"WriteRequirement":"Mandatory",
 			"Comparison": "AnyOf",
 			"Values": ["Lit", "Blinking", "Off", "Unknown"]
 		},
 		"SystemType":{
+			"ReadRequirement":"Recommended",
 			"Comparison": "AnyOf",
 			"Values": [
 				"Physical", "Virtual", "OS", 
@@ -61,6 +74,7 @@
 			]
 		},
 		"Boot": {
+		    	"ReadRequirement":"Mandatory",
 			"PropertyRequirements": {
 				"BootSourceOverrideEnabled": {
 					"Comparison": "AnyOf",
@@ -95,8 +109,7 @@
 				"On", "ForceOff", "ForceRestart", 
 				"GracefulShutdown", "PushPowerButton", 
 				"Nmi", "PowerCycle"
-				],
-                            "RecommendedValues": ["GracefulRestart"]
+				]
                         }
                     }
                 }
