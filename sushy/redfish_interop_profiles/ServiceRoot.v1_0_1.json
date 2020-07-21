@@ -1,0 +1,75 @@
+{
+    "SchemaDefinition": "OpenstackSushyRedfishInteroperabilityProfile.v1_0_0",
+    "ProfileName": "ServiceRootProfile",
+    "ProfileVersion": "1.0.1",
+    "Purpose": "Specifies the OpenStack sushy Redfish client requirements of a Redfish service implementation, typically offered by a baseboard management controller (BMC)",
+    "OwningEntity": "Dell Inc.",
+    "ContactInfo": ["richard.pioso@dell.com", "shrivastava_pranjali@dellteam.com", "digmabar_patil@dellteam.com"],
+    "Protocol": {
+        "MinVersion" : "1.0.0",
+        "Discovery" : "Recommended",
+        "HostInterface" : "Recommended"
+    },
+    "Resources": {
+        "ServiceRoot": {
+            "PropertyRequirements": {
+                "Chassis": {
+		    "ReadRequirement": "Recommended"
+		},
+                "Managers": {
+		    "ReadRequirement": "Recommended"
+		},
+                "SessionService": {
+		    "ReadRequirement": "Recommended"
+		},
+                "UUID": {
+                    "ReadRequirement": "IfImplemented"
+                },
+                "Product": {
+                    "ReadRequirement": "Recommended"
+                },
+                "RedfishVersion" : {
+                    "ReadRequirement": "Recommended"
+                },
+                "Oem" : {
+                    "ReadRequirement": "Recommended"
+                },
+                "CompositionService" : {
+                    "ReadRequirement": "IfImplemented"
+                },
+                "ProtocolFeaturesSupported": {
+                    "ReadRequirement" : "Recommended",
+                    "PropertyRequirements": {
+                        "ExcerptQuery" : {
+                            "ReadRequirement" : "Recommended"
+                        },
+                        "ExpandQuery" : {
+                            "ReadRequirement" : "Recommended"
+                        },
+                        "FilterQuery" : {
+                            "ReadRequirement" : "Recommended"
+                        },
+                        "OnlyMemberQuery" : {
+                            "ReadRequirement" : "Recommended"
+                        },
+                        "SelectQuery" : {
+                            "ReadRequirement" : "Recommended"
+                        }
+                    }
+                },
+                "Systems": {
+		    "ReadRequirement": "Recommended"
+		},
+                "Fabrics": {
+		    "ReadRequirement": "Recommended"
+		},
+                "Registries": {
+		    "ReadRequirement": "Recommended"
+		},
+                "UpdateService": {
+		    "ReadRequirement": "Recommended"
+		}
+            }
+        }
+    }
+}
