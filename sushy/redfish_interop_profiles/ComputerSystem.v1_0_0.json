@@ -1,10 +1,10 @@
 {
-    "SchemaDefinition": "OpenstackSushyRedfishInteroperabilityProfile.v1_0_0",
-    "ProfileName": "ComputerSystemsProfile",
-    "ProfileVersion": "1.0.1",
+    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+    "ProfileName": "OpenstackSushy",
+    "ProfileVersion": "1.0.0",
     "Purpose": "Specifies the OpenStack sushy Redfish client requirements of a Redfish service implementation, typically offered by a baseboard management controller (BMC).",
     "OwningEntity": "Dell Inc.",
-    "ContactInfo": ["richard.pioso@dell.com", "digmabar.patil@dellteam.com", "dhuldev.valekar@dellteam.com"],
+    "ContactInfo": ["dhuldev.valekar@dellteam.com", "digmabar.patil@dellteam.com", "richard.pioso@dell.com"],
     "Protocol": {
         "MinVersion": "1.0",
         "Discovery": "Recommended",
@@ -23,88 +23,43 @@
             "Purpose": "Every implementation must have the logical view of the System.",
             "PropertyRequirements": {
                 "AssetTag": {
-                    "ReadRequirement":"Recommended"
-                },
-                "Description": {
-                    "ReadRequirement":"Recommended"
-                },
-                "UUID": {
-                    "ReadRequirement":"Recommended"
-                },
-                "SerialNumber": {
-                    "ReadRequirement":"Recommended"
-                },
-                "Manufacturer": {
-                    "ReadRequirement":"Recommended"
-                },
-                "Model": {
-                    "ReadRequirement":"Recommended"
-                },
-                "MemorySummary": {
-                    "ReadRequirement":"Recommended",
-                    "PropertyRequirements":{
-                        "Status": {
-                            "ReadRequirement":"IfImplemented"
-                        },
-                        "TotalSystemMemoryGiB": {
-                            "ReadRequirement":"IfImplemented"
-                        },
-                        "HealthRollup": {
-                            "ReadRequirement":"IfImplemented"
-                        }
-                    }
-                },
-                "SKU": {
-                    "ReadRequirement":"Recommended"
+                    "ReadRequirement": "Recommended"
                 },
                 "BiosVersion": {
-                    "ReadRequirement":"Recommended"
-                },
-                "HostName": {
-                    "ReadRequirement":"Recommended"
-                },
-                "PowerState": {
-                    "ReadRequirement":"Recommended",
-                    "Comparison": "AnyOf",
-                    "Values": ["On","Off","PoweringOn","PoweringOff"]
-                },
-                "IndicatorLED": {
-                    "ReadRequirement":"Recommended",
-                    "WriteRequirement":"Mandatory",
-                    "Comparison": "AnyOf",
-                    "Values": ["Lit", "Blinking", "Off", "Unknown"]
-                },
-                "SystemType": {
-                    "ReadRequirement":"Recommended",
-                    "Comparison": "AnyOf",
-                    "Values": [
-                        "Physical", "Virtual", "OS",
-                        "PhysicallyPartitioned",
-                        "VirtuallyPartitioned", "Composed"
-                    ]
+                    "ReadRequirement": "Recommended"
                 },
                 "Boot": {
-                    "ReadRequirement":"Mandatory",
+                    "ReadRequirement": "Mandatory",
                     "PropertyRequirements": {
                         "BootSourceOverrideEnabled": {
-                            "WriteRequirement":"Mandatory",
                             "Comparison": "AnyOf",
                             "Values": ["Once","Continuous","Disabled"]
                         },
                         "BootSourceOverrideMode": {
-                            "WriteRequirement":"Mandatory",
                             "Comparison": "AnyOf",
                             "Values": ["UEFI","Legacy"]
                         },
                         "BootSourceOverrideTarget": {
-                            "WriteRequirement":"Mandatory",
-                            "MinSupportValues": [
+                            "Comparison": "AnyOf",
+                            "Values": [
                                 "None", "Pxe", "Floppy", "Cd",
                                 "Hdd", "BiosSetup", "Utilities",
                                 "UefiTarget", "SDCard", "UefiHttp"
                             ]
                         }
                     }
+                },
+                "Description": {
+                    "ReadRequirement": "Recommended"
+                },
+                "HostName": {
+                    "ReadRequirement": "Recommended"
+                },
+                "IndicatorLED": {
+                    "ReadRequirement": "Recommended",
+                    "WriteRequirement": "Mandatory",
+                    "Comparison": "AnyOf",
+                    "Values": ["Lit", "Blinking", "Off", "Unknown"]
                 },
                 "Links": {
                     "PropertyRequirements": {
@@ -115,7 +70,50 @@
                         }
                     }
                 },
+                "Manufacturer": {
+                    "ReadRequirement": "Recommended"
+                },
+                "MemorySummary": {
+                    "ReadRequirement": "Recommended",
+                    "PropertyRequirements":{
+                        "Status": {
+                            "ReadRequirement": "IfImplemented"
+                        },
+                        "TotalSystemMemoryGiB": {
+                            "ReadRequirement": "IfImplemented"
+                        },
+                        "HealthRollup": {
+                            "ReadRequirement": "IfImplemented"
+                        }
+                    }
+                },
+                "Model": {
+                    "ReadRequirement": "Recommended"
+                },
                 "Oem": {
+                    "ReadRequirement": "Recommended"
+                },
+                "PowerState": {
+                    "ReadRequirement": "Recommended",
+                    "Comparison": "AnyOf",
+                    "Values": ["On","Off","PoweringOn","PoweringOff"]
+                },
+                "SerialNumber": {
+                    "ReadRequirement": "Recommended"
+                },
+                "SKU": {
+                    "ReadRequirement": "Recommended"
+                },
+                "SystemType": {
+                    "ReadRequirement": "Recommended",
+                    "Comparison": "AnyOf",
+                    "Values": [
+                        "Physical", "Virtual", "OS",
+                        "PhysicallyPartitioned",
+                        "VirtuallyPartitioned", "Composed"
+                    ]
+                },
+                "UUID": {
                     "ReadRequirement":"Recommended"
                 }
             },
@@ -137,4 +135,3 @@
         }
     }
 }
-
