@@ -4,11 +4,9 @@
     "ProfileVersion": "1.0.0",
     "Purpose": "Specifies the OpenStack sushy Redfish client requirements of a Redfish service implementation, typically offered by a baseboard management controller (BMC).",
     "OwningEntity": "Dell Inc.",
-    "ContactInfo": ["dhuldev.valekar@dellteam.com", "digmabar.patil@dellteam.com", "richard.pioso@dell.com"],
+    "ContactInfo": "richard.pioso@dell.com",
     "Protocol": {
-        "MinVersion": "1.0",
-        "Discovery": "Recommended",
-        "HostInterface": "Recommended"
+        "MinVersion": "1.0"
     },
     "Resources": {
         "ComputerSystemCollection": {
@@ -77,13 +75,13 @@
                     "ReadRequirement": "Recommended",
                     "PropertyRequirements":{
                         "Status": {
-                            "ReadRequirement": "IfImplemented"
+                            "ReadRequirement": "Recommended"
                         },
                         "TotalSystemMemoryGiB": {
-                            "ReadRequirement": "IfImplemented"
+                            "ReadRequirement": "Recommended"
                         },
                         "HealthRollup": {
-                            "ReadRequirement": "IfImplemented"
+                            "ReadRequirement": "Recommended"
                         }
                     }
                 },
