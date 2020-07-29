@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright (c) 2020 Dell Inc. or its subsidiaries.",
     "@Redfish.License": "Apache License, Version 2.0. For full text, see link: http://www.apache.org/licenses/LICENSE-2.0",
-    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
+    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_3_1",
     "ProfileName": "OpenStackSushy",
     "ProfileVersion": "1.0.0",
     "Purpose": "Specifies the OpenStack sushy Redfish client requirements of a Redfish service implementation, typically offered by a baseboard management controller (BMC)",
