@@ -1,0 +1,66 @@
+{
+    "@Redfish.Copyright": "Copyright (c) 2020 Dell Inc. or its subsidiaries.",
+    "@Redfish.License": "Apache License, Version 2.0. For full text, see link: http://www.apache.org/licenses/LICENSE-2.0",
+    "SchemaDefinition": "RedfishInteroperabilityProfile.v1_3_1",
+    "ProfileName": "OpenStackSushy",
+    "ProfileVersion": "1.0.0",
+    "Purpose": "Specifies the OpenStack sushy Redfish client requirements of a Redfish service implementation, typically offered by a baseboard management controller (BMC)",
+    "OwningEntity": "Dell Inc.",
+    "ContactInfo":  "digmabar_patil@dellteam.com, michael.raineri@dell.com, pranjali_shrivastava@dellteam.com, richard.pioso@dell.com",
+    "Protocol": {
+        "MinVersion": "1.0.0"
+    },
+    "Resources": {
+        "ServiceRoot": {
+            "PropertyRequirements": {
+                "Chassis": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Managers": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Oem": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Product": {
+                    "ReadRequirement": "Recommended"
+                },
+                "ProtocolFeaturesSupported": {
+                    "ReadRequirement": "Recommended",
+                    "PropertyRequirements": {
+                        "ExcerptQuery": {
+                            "ReadRequirement": "Recommended"
+                        },
+                        "ExpandQuery": {
+                            "ReadRequirement": "Recommended"
+                        },
+                        "FilterQuery": {
+                            "ReadRequirement": "Recommended"
+                        },
+                        "OnlyMemberQuery": {
+                            "ReadRequirement": "Recommended"
+                        },
+                        "SelectQuery": {
+                            "ReadRequirement": "Recommended"
+                        }
+                    }
+                },
+                "RedfishVersion": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Registries": {
+                    "ReadRequirement": "Recommended"
+                },
+                "SessionService": {
+                    "ReadRequirement": "Recommended"
+                },
+                "Systems": {
+                    "ReadRequirement": "Recommended"
+                },
+                "UpdateService": {
+                    "ReadRequirement": "Recommended"
+                }
+            }
+        }
+    }
+}
